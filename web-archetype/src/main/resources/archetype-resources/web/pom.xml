@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}</artifactId>
+        <version>${version}</version>
+    </parent>
+
+    <artifactId>${rootArtifactId}-web</artifactId>
+    <name>${rootArtifactId}-web</name>
+    <packaging>war</packaging>
+
+    <properties>
+        <webContent>${project.basedir}/src/main/webapp</webContent>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.15.v20140411</version>
+            </plugin>
+        </plugins>  
+    </build>      
+    
+    <dependencies>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-app</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Web composite provides basic web features -->
+        <dependency>
+            <groupId>org.seedstack</groupId>
+            <artifactId>web-composite</artifactId>
+            <type>pom</type>
+        </dependency>
+
+        <!-- Server API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Logger -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+        <!-- TEST  -->
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-integrationtest-support-web</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
